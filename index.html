@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NUMI — The Agentic Mascot of PONS</title>
+  <meta name="description" content="NUMI is the agentic mascot of PONS by PONS founder. Trade $NUMI on Robinhood ETH." />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            numi: {
+              void: "#070a08",
+              ink: "#0c1210",
+              panel: "#121a16",
+              glass: "#1a2820",
+              liquid: "#1e3d2f",
+              moss: "#2d5a42",
+              glow: "#9dffb0",
+              lime: "#6dff8a",
+              mint: "#c8ffd4",
+              steel: "#8a9a90",
+            },
+          },
+          fontFamily: {
+            display: ["Syne", "sans-serif"],
+            sans: ["Manrope", "sans-serif"],
+          },
+          boxShadow: {
+            glow: "0 0 40px rgba(157, 255, 176, 0.25)",
+            "glow-sm": "0 0 20px rgba(157, 255, 176, 0.35)",
+            "glow-btn": "0 0 28px rgba(109, 255, 138, 0.45)",
+          },
+          animation: {
+            float: "float 6s ease-in-out infinite",
+            pulseGlow: "pulseGlow 3s ease-in-out infinite",
+            rise: "rise 0.9s ease-out both",
+            shimmer: "shimmer 4s linear infinite",
+          },
+          keyframes: {
+            float: {
+              "0%, 100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-14px)" },
+            },
+            pulseGlow: {
+              "0%, 100%": { filter: "drop-shadow(0 0 12px rgba(157,255,176,0.35))" },
+              "50%": { filter: "drop-shadow(0 0 28px rgba(157,255,176,0.7))" },
+            },
+            rise: {
+              from: { opacity: "0", transform: "translateY(24px)" },
+              to: { opacity: "1", transform: "translateY(0)" },
+            },
+            shimmer: {
+              "0%": { backgroundPosition: "200% 0" },
+              "100%": { backgroundPosition: "-200% 0" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #070a08;
+      color: #e8f5ec;
+    }
+    .circuit-bg {
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(45, 90, 66, 0.45), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 100% 20%, rgba(30, 61, 47, 0.35), transparent 50%),
+        radial-gradient(ellipse 40% 30% at 0% 60%, rgba(109, 255, 138, 0.06), transparent 45%),
+        linear-gradient(rgba(157, 255, 176, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(157, 255, 176, 0.03) 1px, transparent 1px);
+      background-size: auto, auto, auto, 48px 48px, 48px 48px;
+    }
+    .glass-panel {
+      background: linear-gradient(145deg, rgba(26, 40, 32, 0.75), rgba(12, 18, 16, 0.85));
+      border: 1px solid rgba(157, 255, 176, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .liquid-border {
+      position: relative;
+    }
+    .liquid-border::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(157, 255, 176, 0.5),
+        rgba(45, 90, 66, 0.2),
+        rgba(200, 255, 212, 0.35)
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .logo-orb {
+      background:
+        radial-gradient(circle at 35% 30%, rgba(200, 255, 212, 0.25), transparent 40%),
+        radial-gradient(circle at 50% 60%, rgba(30, 61, 47, 0.9), rgba(7, 10, 8, 0.95));
+      box-shadow:
+        0 0 0 1px rgba(157, 255, 176, 0.2),
+        0 0 60px rgba(109, 255, 138, 0.2),
+        inset 0 0 40px rgba(157, 255, 176, 0.08);
+    }
+    .ticker {
+      animation: ticker 28s linear infinite;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .step-num {
+      background: linear-gradient(180deg, #9dffb0 0%, #2d5a42 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-cta-buy {
+      background: linear-gradient(135deg, #6dff8a 0%, #2d5a42 55%, #1e3d2f 100%);
+      background-size: 200% 200%;
+    }
+    .hero-cta-buy:hover {
+      background-position: 100% 0;
+      box-shadow: 0 0 36px rgba(109, 255, 138, 0.55);
+    }
+    .copy-toast {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="font-sans circuit-bg antialiased overflow-x-hidden">
+
+  <!-- Nav -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-4">
+      <nav class="glass-panel liquid-border rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-3 group">
+          <span class="logo-orb relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shrink-0">
+            <img src="logo.png" alt="NUMI logo" class="w-8 h-8 object-contain animate-pulseGlow" />
+          </span>
+          <span class="font-display font-extrabold text-xl tracking-tight text-numi-mint group-hover:text-numi-glow transition-colors">NUMI</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-numi-steel">
+          <a href="#about" class="hover:text-numi-glow transition-colors">About</a>
+          <a href="#howtobuy" class="hover:text-numi-glow transition-colors">How to Buy</a>
+          <a href="#chart" class="hover:text-numi-glow transition-colors">Chart</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="https://t.me/NUMImascot" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/10 hover:ring-numi-glow/50 hover:scale-110 transition-all" aria-label="Telegram">
+            <img src="tg.png" alt="Telegram" class="w-full h-full object-cover" />
+          </a>
+          <a href="https://x.com/NUMImascot" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/10 hover:ring-numi-glow/50 hover:scale-110 transition-all bg-black" aria-label="X / Twitter">
+            <img src="x.png" alt="X" class="w-full h-full object-cover" />
+          </a>
+          <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex hero-cta-buy text-numi-void font-display font-bold text-sm px-4 py-2 rounded-xl shadow-glow-btn transition-all">
+            Buy Now
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Ticker -->
+  <div class="pt-[88px] border-y border-numi-glow/10 bg-numi-ink/80 overflow-hidden">
+    <div class="flex whitespace-nowrap ticker py-2.5 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-numi-glow/80">
+      <span class="px-6">$NUMI</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Agentic Mascot of PONS</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Robinhood ETH</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">By PONS Founder</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">$NUMI</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Agentic Mascot of PONS</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Robinhood ETH</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">By PONS Founder</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">$NUMI</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Agentic Mascot of PONS</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Robinhood ETH</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">By PONS Founder</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">$NUMI</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Agentic Mascot of PONS</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">Robinhood ETH</span><span class="px-6 text-numi-steel">•</span>
+      <span class="px-6">By PONS Founder</span><span class="px-6 text-numi-steel">•</span>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="relative min-h-[calc(100svh-132px)] flex flex-col justify-center overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="banner.png" alt="" class="w-full h-full object-cover opacity-40 scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-b from-numi-void/70 via-numi-void/55 to-numi-void"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#070a08_75%)]"></div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20 w-full">
+        <div class="flex flex-col items-center text-center animate-rise">
+          <div class="logo-orb relative w-36 h-36 sm:w-44 sm:h-44 rounded-[2rem] flex items-center justify-center mb-8 animate-float">
+            <div class="absolute inset-3 rounded-[1.5rem] border border-numi-glow/20"></div>
+            <img src="logo.png" alt="NUMI mascot" class="relative w-28 h-28 sm:w-36 sm:h-36 object-contain animate-pulseGlow drop-shadow-glow" />
+          </div>
+
+          <h1 class="font-display font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-numi-mint via-numi-glow to-numi-moss leading-none">
+            NUMI
+          </h1>
+
+          <p class="mt-5 max-w-xl text-base sm:text-lg text-numi-steel leading-relaxed">
+            The agentic mascot of PONS by PONS founder — a liquid-glass agent live on Robinhood ETH.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="hero-cta-buy inline-flex items-center gap-2 text-numi-void font-display font-bold text-base sm:text-lg px-7 py-3.5 rounded-2xl shadow-glow-btn transition-all">
+              Buy Now
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+            <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 glass-panel liquid-border font-display font-bold text-base sm:text-lg text-numi-mint px-7 py-3.5 rounded-2xl hover:text-numi-glow hover:shadow-glow-sm transition-all">
+              Chart
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.5 9 7.5l4 4 7-7M21 7.5v6h-6"/></svg>
+            </a>
+          </div>
+
+          <!-- CA Copy -->
+          <div class="mt-8 relative">
+            <button type="button" id="copyCa" class="group glass-panel liquid-border rounded-2xl px-4 sm:px-5 py-3 flex items-center gap-3 sm:gap-4 max-w-full hover:shadow-glow-sm transition-all">
+              <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-numi-glow shrink-0">CA</span>
+              <code id="caAddress" class="font-mono text-xs sm:text-sm text-numi-mint/90 truncate max-w-[180px] sm:max-w-[320px] md:max-w-none">TBA</code>
+              <span class="shrink-0 w-8 h-8 rounded-lg bg-numi-glow/10 flex items-center justify-center text-numi-glow group-hover:bg-numi-glow/20 transition-colors">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              </span>
+            </button>
+            <span id="copyToast" class="copy-toast absolute -bottom-9 left-1/2 -translate-x-1/2 text-xs font-semibold text-numi-glow">Copied!</span>
+          </div>
+
+          <p class="mt-6 text-xs uppercase tracking-[0.25em] text-numi-steel/70">
+            Symbol <span class="text-numi-glow">NUMI</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="relative py-20 sm:py-28">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class="order-2 md:order-1">
+            <p class="text-xs font-bold uppercase tracking-[0.3em] text-numi-glow mb-3">About</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-numi-mint leading-tight">
+              Meet the agent behind the glass
+            </h2>
+            <p class="mt-5 text-numi-steel leading-relaxed text-base sm:text-lg">
+              NUMI is the agentic mascot of PONS, created by the PONS founder. Two stacked liquid-glass forms. Glowing eyes. Built to move with the chain — and with the culture.
+            </p>
+            <p class="mt-4 text-numi-steel leading-relaxed">
+              $NUMI lives on Robinhood ETH. Same symbol. Same signal. One agentic icon for the PONS universe.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <div class="glass-panel rounded-xl px-4 py-3">
+                <p class="text-[10px] uppercase tracking-widest text-numi-steel">Name</p>
+                <p class="font-display font-bold text-numi-mint">NUMI</p>
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3">
+                <p class="text-[10px] uppercase tracking-widest text-numi-steel">Symbol</p>
+                <p class="font-display font-bold text-numi-mint">$NUMI</p>
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3">
+                <p class="text-[10px] uppercase tracking-widest text-numi-steel">Chain</p>
+                <p class="font-display font-bold text-numi-mint">Robinhood ETH</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2 flex justify-center">
+            <div class="relative w-full max-w-md">
+              <div class="absolute -inset-4 rounded-3xl bg-numi-glow/10 blur-2xl"></div>
+              <div class="relative liquid-border rounded-3xl overflow-hidden glass-panel">
+                <img src="banner.png" alt="NUMI banner" class="w-full h-auto object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Buy -->
+    <section id="howtobuy" class="relative py-20 sm:py-28 border-t border-numi-glow/10">
+      <div class="absolute inset-0 bg-gradient-to-b from-numi-liquid/10 via-transparent to-numi-liquid/10 pointer-events-none"></div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <p class="text-xs font-bold uppercase tracking-[0.3em] text-numi-glow mb-3">How to Buy</p>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-numi-mint">
+            Get $NUMI on Robinhood ETH
+          </h2>
+          <p class="mt-4 text-numi-steel">
+            Four steps. Wallet ready. Swap live. Join the agent.
+          </p>
+        </div>
+
+        <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          <li class="glass-panel liquid-border rounded-2xl p-6 sm:p-7 group hover:shadow-glow transition-shadow duration-500">
+            <span class="step-num font-display font-extrabold text-5xl">01</span>
+            <h3 class="mt-4 font-display font-bold text-xl text-numi-mint">Get a Wallet</h3>
+            <p class="mt-2 text-sm text-numi-steel leading-relaxed">
+              Install a Web3 wallet (MetaMask or similar) and unlock it for trading on Robinhood ETH.
+            </p>
+          </li>
+          <li class="glass-panel liquid-border rounded-2xl p-6 sm:p-7 group hover:shadow-glow transition-shadow duration-500">
+            <span class="step-num font-display font-extrabold text-5xl">02</span>
+            <h3 class="mt-4 font-display font-bold text-xl text-numi-mint">Fund with ETH</h3>
+            <p class="mt-2 text-sm text-numi-steel leading-relaxed">
+              Add or bridge ETH onto Robinhood ETH so you have gas and swap liquidity ready.
+            </p>
+          </li>
+          <li class="glass-panel liquid-border rounded-2xl p-6 sm:p-7 group hover:shadow-glow transition-shadow duration-500">
+            <span class="step-num font-display font-extrabold text-5xl">03</span>
+            <h3 class="mt-4 font-display font-bold text-xl text-numi-mint">Open Uniswap</h3>
+            <p class="mt-2 text-sm text-numi-steel leading-relaxed">
+              Go to Uniswap, select the Robinhood chain, and connect your wallet securely.
+            </p>
+          </li>
+          <li class="glass-panel liquid-border rounded-2xl p-6 sm:p-7 group hover:shadow-glow transition-shadow duration-500">
+            <span class="step-num font-display font-extrabold text-5xl">04</span>
+            <h3 class="mt-4 font-display font-bold text-xl text-numi-mint">Swap for $NUMI</h3>
+            <p class="mt-2 text-sm text-numi-steel leading-relaxed">
+              Paste the CA, set ETH → $NUMI, confirm the swap, and welcome the agent home.
+            </p>
+          </li>
+        </ol>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-3 sm:gap-4">
+          <a href="https://app.uniswap.org/swap?chain=robinhood&outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="hero-cta-buy inline-flex items-center gap-2 text-numi-void font-display font-bold px-7 py-3.5 rounded-2xl shadow-glow-btn transition-all">
+            Buy $NUMI Now
+          </a>
+          <button type="button" id="copyCaHow" class="glass-panel liquid-border inline-flex items-center gap-2 font-display font-bold text-numi-mint px-7 py-3.5 rounded-2xl hover:shadow-glow-sm transition-all">
+            Copy CA
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chart / DexScreener -->
+    <section id="chart" class="relative py-20 sm:py-28 border-t border-numi-glow/10">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.3em] text-numi-glow mb-3">Live Chart</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-numi-mint">
+              DexScreener
+            </h2>
+          </div>
+          <a href="https://dexscreener.com/robinhood/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-numi-glow hover:text-numi-mint transition-colors">
+            Open full chart
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+          </a>
+        </div>
+
+        <div class="liquid-border rounded-2xl overflow-hidden glass-panel shadow-glow">
+          <div class="relative w-full" style="padding-top: 62%; min-height: 420px;">
+            <iframe
+              title="NUMI DexScreener Chart"
+              src="https://dexscreener.com/robinhood/TBA?embed=1&theme=dark&trades=0&info=0"
+              class="absolute inset-0 w-full h-full border-0"
+              allow="clipboard-write"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section class="relative py-20 sm:py-24 border-t border-numi-glow/10">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+        <div class="logo-orb inline-flex w-20 h-20 rounded-2xl items-center justify-center mb-6 animate-float">
+          <img src="logo.png" alt="" class="w-14 h-14 object-contain animate-pulseGlow" />
+        </div>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-numi-mint">
+          Join the NUMI signal
+        </h2>
+        <p class="mt-4 text-numi-steel">
+          Follow the agent. Chat with the culture. Stay early on PONS.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="https://t.me/NUMImascot" target="_blank" rel="noopener noreferrer" class="glass-panel liquid-border inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl hover:shadow-glow-sm transition-all group">
+            <img src="tg.png" alt="" class="w-8 h-8 rounded-full object-cover" />
+            <span class="font-display font-bold text-numi-mint group-hover:text-numi-glow">Telegram</span>
+          </a>
+          <a href="https://x.com/NUMImascot" target="_blank" rel="noopener noreferrer" class="glass-panel liquid-border inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl hover:shadow-glow-sm transition-all group">
+            <img src="x.png" alt="" class="w-8 h-8 rounded-full object-cover bg-black" />
+            <span class="font-display font-bold text-numi-mint group-hover:text-numi-glow">Follow on X</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-numi-glow/10 py-10">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="" class="w-8 h-8 object-contain opacity-80" />
+        <span class="font-display font-bold text-numi-mint">NUMI</span>
+        <span class="text-numi-steel text-sm">· $NUMI on Robinhood ETH</span>
+      </div>
+      <p class="text-xs text-numi-steel/70 text-center sm:text-right max-w-md">
+        NUMI is the agentic mascot of PONS by PONS founder. Crypto involves risk. DYOR.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const CA = "TBA";
+
+    function copyCa() {
+      const done = () => {
+        const toast = document.getElementById("copyToast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1600);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(CA).then(done).catch(() => fallbackCopy(CA, done));
+      } else {
+        fallbackCopy(CA, done);
+      }
+    }
+
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (_) {}
+      document.body.removeChild(ta);
+      cb();
+    }
+
+    document.getElementById("copyCa").addEventListener("click", copyCa);
+    document.getElementById("copyCaHow").addEventListener("click", copyCa);
+  </script>
+</body>
+</html>
